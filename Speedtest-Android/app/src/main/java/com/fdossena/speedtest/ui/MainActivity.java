@@ -32,14 +32,22 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import your.name.here.speedtest.R;
+import com.fdossena.speedtest.R;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 
 public class MainActivity extends Activity {
+
+    private final String appSecret = "baba-yaga";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AppCenter.start(getApplication(), appSecret, Analytics.class, Crashes.class);
+
         transition(R.id.page_splash,0);
         new Thread(){
             public void run(){
